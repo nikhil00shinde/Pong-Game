@@ -1,0 +1,37 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	background-image: linear-gradient(
+		to right,
+		#f78ca0 0%,
+		#f9748f 19%,
+		#fd868c 60%,
+		#fe9a8b 100%
+	);
+	/* to perfectly center any element */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.board {
+	height: 85vh;
+	width: 80vw;
+	background-color: #1a0d52;
+	border-radius: 10px;
+}
+.ball {
+	/* how to make a circle in css */
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	background-color: #fe5196;
+	position: fixed;
+	top: 45vh;
+	left: 50vw;
+}
