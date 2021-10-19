@@ -1,8 +1,34 @@
 // alert("js connected");
 let ball = document.querySelector(".ball");
 let board = document.querySelector(".board");
+let leftPaddle = document.querySelector(".left");
+let rightPaddle = document.querySelector(".right");
 let boardBound = board.getBoundingClientRect();
 let x = (y = true);
+//taking user input
+document.addEventListener("keydown", (e) => {
+	if (e.key == "w") {
+		movePaddle(leftPaddle, -window.innerHeight * 0.1);
+	} else if (e.key == "s") {
+		movePaddle(leftPaddle, window.innerHeight * 0.1);
+	} else if (e.key == "ArrowUp") {
+		movePaddle(rightPaddle, -window.innerHeight * 0.1);
+	} else if (e.key == "ArrowDown") {
+		movePaddle(rightPaddle, window.innerHeight * 0.1);
+	}
+});
+
+function movePaddle(cPaddle, change) {
+	let cPaddleBound = cPaddle.getBoundingClientRect();
+
+	if (
+		cPaddleBound.top + change >= boardBound.top &&
+		cPaddleBound.bottom + change <= boardBound.bottom
+	) {
+		cPaddle.style.top = cPaddleBound.top + change+"px";
+	}
+}
+
 function moveBall() {
 	let ballcord = ball.getBoundingClientRect();
 	let ballTop = ballcord.top;
