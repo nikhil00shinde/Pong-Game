@@ -53,3 +53,34 @@ body {
 	top: 40vh;
 	right: 12vw;
 }
+
+.scoreboard {
+	display: flex;
+	justify-content: space-around;
+}
+.scoreboard_left,
+.scoreboard_right {
+	display: flex;
+}
+.l1 {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	background-color: #fdcb6e;
+}
+
+.separator {
+	height: 2.5rem;
+	width: 12px;
+	background-color: black;
+}
+.r1 {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	background-color: #fdcb6e;
+}
+
+.active {
+	background-color: #4a69bd;
+}
