@@ -3,6 +3,7 @@ let ball = document.querySelector(".ball");
 let board = document.querySelector(".board");
 let leftPaddle = document.querySelector(".left");
 let rightPaddle = document.querySelector(".right");
+let paddle = document.querySelector(".paddle");
 let boardBound = board.getBoundingClientRect();
 let x = (y = true);
 //taking user input
@@ -25,7 +26,7 @@ function movePaddle(cPaddle, change) {
 		cPaddleBound.top + change >= boardBound.top &&
 		cPaddleBound.bottom + change <= boardBound.bottom
 	) {
-		cPaddle.style.top = cPaddleBound.top + change+"px";
+		cPaddle.style.top = cPaddleBound.top + change + "px";
 	}
 }
 
@@ -42,9 +43,42 @@ function moveBall() {
 	}
 
 	//handle horizontally
-	if (ballLeft <= boardBound.left || ballRight >= boardBound.right) {
+	// if (ballLeft <= boardBound.left || ballRight >= boardBound.right) {
+	// 	x = !x;
+	// }
+   
+	// **********************COLLISION*******************
+	// right hit => np
+	let rightpaddleBounds = rightPaddle.getBoundingClientRect();
+
+	if (
+		rightpaddleBounds.top <= ballTop+30 &&
+		rightpaddleBounds.bottom >= ballBottom-30 &&
+		rightpaddleBounds.left <= ballRight &&
+		rightpaddleBounds.right >= ballLeft
+	)
+	{
 		x = !x;
 	}
+
+
+	// right hit => np
+	let leftpaddleBounds = leftPaddle.getBoundingClientRect();
+
+	if (
+		leftpaddleBounds.top <= ballTop+30 &&
+		leftpaddleBounds.bottom >= ballBottom-30 &&
+		leftpaddleBounds.left <= ballRight &&
+		leftpaddleBounds.right >= ballLeft
+	)
+	{
+		x = !x;
+	}
+   // *************************************COLLISION**************
+
+    //issue 
+
+	
 	ball.style.top = y == true ? ballTop + 2 + "px" : ballTop - 2 + "px";
 	ball.style.left = x == true ? ballLeft + 2 + "px" : ballLeft - 2 + "px";
 	requestAnimationFrame(moveBall);
